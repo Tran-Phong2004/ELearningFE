@@ -1,0 +1,20 @@
+﻿@inject IHttpContextAccessor httpContextAccessor
+
+@{
+    var username = httpContextAccessor.HttpContext.Session.GetString("Username");
+    if (username == null)
+    {
+        <a class="btn btn-primary ms-2" asp-action="Login" asp-controller="Account" asp-area="">
+            Đăng nhập
+        </a>
+
+        <a class="btn btn-primary ms-2" asp-action="Register" asp-controller="Account" asp-area="">
+            Đăng kí
+        </a>
+    }
+    else
+    {
+        <a class="btn btn-primary ms-2">@username</a>
+        <a class="btn btn-primary ms-2" href="@Url.Action("Logout","Account")">Đăng xuất</a>
+    }
+}

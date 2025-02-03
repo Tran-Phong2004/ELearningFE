@@ -1,0 +1,122 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .login-container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+
+    }
+
+    .login-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+    }
+
+    .form-group {
+    margin-bottom: 1rem;
+    }
+
+    .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #555;
+    }
+
+    .form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+    }
+
+    .form-group input:focus {
+    border-color: #6a11cb;
+    }
+
+    .login-button {
+    width: 100%;
+    padding: 0.8rem;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    }
+
+    .login-button:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    }
+
+    .forgot-password {
+    text-align: center;
+    margin-top: 1rem;
+    }
+
+    .forgot-password a {
+    color: #6a11cb;
+    text-decoration: none;
+    font-size: 0.9rem;
+    }
+
+    .forgot-password a:hover {
+    text-decoration: underline;
+    }
+
+    .btn-primary {
+        background: var(--primary-color);
+        border: none;
+        padding: 0.8rem 2rem;
+        border-radius: 50px;
+        transition: all 0.3s;
+    }
+
+    .btn-primary:hover {
+        background: var(--secondary-color);
+        transform: translateY(-2px);
+    }
+</style>
+@{
+    var errLogin = TempData["ErrLogin"];
+    if(errLogin != null){
+        <div class="my-3">
+            <p class="alert alert-danger">@errLogin</p>
+        </div>
+    }
+}
+
+<div class="d-flex justify-content-center">
+    <div class="login-container">
+        <h2>Login</h2>
+        <form method="post" asp-action="Login" asp-controller="Account">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="login-button">Login</button>
+        </form>
+        <div class="forgot-password">
+            <a href="#">Forgot your password?</a>
+        </div>
+    </div>
+</div>
+
